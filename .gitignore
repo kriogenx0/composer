@@ -1,0 +1,9 @@
+# Xcode / build
+Composer.xcodeproj/
+DerivedData/
+build/
+*.xcuserstate
+xcuserdata/
+.DS_Store
+
+# XcodeGen writes the project; regenerate with `xcodegen generate`
