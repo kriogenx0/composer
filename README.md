@@ -11,8 +11,9 @@ Requires Xcode 15+ and [XcodeGen](https://github.com/yonyz/XcodeGen) (`brew inst
 ```sh
 xcodegen generate          # writes Composer.xcodeproj from project.yml
 open Composer.xcodeproj     # then ⌘R
-# or headless:
-xcodebuild -project Composer.xcodeproj -scheme Composer -configuration Debug build
+# or headless, signed ad hoc (no developer certificate needed):
+xcodebuild -project Composer.xcodeproj -scheme Composer -configuration Debug build \
+  CODE_SIGN_IDENTITY=- CODE_SIGN_STYLE=Manual DEVELOPMENT_TEAM=
 ```
 
 The `.xcodeproj` is generated and git-ignored — edit `project.yml` and re-run `xcodegen`.

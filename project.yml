@@ -1,6 +1,6 @@
 name: Composer
 options:
-  bundleIdPrefix: com.composer
+  bundleIdPrefix: org.perfectink
   deploymentTarget:
     macOS: "14.0"
   createIntermediateGroups: true
@@ -8,10 +8,9 @@ settings:
   base:
     SWIFT_VERSION: "5.0"
     MACOSX_DEPLOYMENT_TARGET: "14.0"
-    CODE_SIGN_IDENTITY: "-"
-    CODE_SIGNING_REQUIRED: NO
-    CODE_SIGNING_ALLOWED: NO
-    PRODUCT_BUNDLE_IDENTIFIER: com.composer.app
+    DEVELOPMENT_TEAM: K2F4FTM2XQ
+    CODE_SIGN_STYLE: Automatic
+    PRODUCT_BUNDLE_IDENTIFIER: org.perfectink.composer
     MARKETING_VERSION: "1.0"
     CURRENT_PROJECT_VERSION: "1"
     INFOPLIST_KEY_LSApplicationCategoryType: "public.app-category.music"
@@ -26,8 +25,16 @@ targets:
       base:
         GENERATE_INFOPLIST_FILE: YES
         INFOPLIST_KEY_NSPrincipalClass: NSApplication
-        INFOPLIST_KEY_NSHumanReadableCopyright: ""
+        INFOPLIST_KEY_NSHumanReadableCopyright: "© 2026 Perfect Ink. All rights reserved."
+        INFOPLIST_KEY_ITSAppUsesNonExemptEncryption: NO
         INFOPLIST_KEY_CFBundleDisplayName: Composer
         ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
         ENABLE_HARDENED_RUNTIME: YES
-        ENABLE_APP_SANDBOX: NO
+        ENABLE_APP_SANDBOX: YES
+        ENABLE_USER_SELECTED_FILES: readwrite
+    entitlements:
+      path: Config/Composer.entitlements
+      properties:
+        com.apple.security.app-sandbox: true
+        # Save MIDI files wherever the user picks in the export panel.
+        com.apple.security.files.user-selected.read-write: true
